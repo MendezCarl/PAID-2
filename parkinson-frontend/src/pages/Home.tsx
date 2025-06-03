@@ -2,10 +2,7 @@ import React, {useRef, useState} from "react";
 import UniversalButton from "../components/UniversalButton";
 import { faDisplay } from "@fortawesome/free-solid-svg-icons";
 
-
-
 const Home: React.FC = () => {
-
     //ref to the hidden file input
     const fileInputRef = useRef<HTMLInputElement | null>(null);
 
@@ -27,19 +24,42 @@ const Home: React.FC = () => {
 
     const uploadExistingPatientData = () => {
         openFileExplorer()
-        
     }
 
     return (
-        <div>
-            <h1>This is the Home page</h1>
-            <UniversalButton text = "Upload Patient Data" onClick={uploadExistingPatientData} />
+        <div style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            textAlign: 'center',
+            padding: '2rem',
+            gap: '1.5rem'
+        }}>
+            <h1 style={{
+                fontSize: '2.5rem',
+                color: '#2F75B5',
+                marginBottom: '1rem'
+            }}>Welcome to the Parkinson AI Diagnosis System</h1>
+            
+            <p style={{
+                fontSize: '1.2rem',
+                maxWidth: '800px',
+                lineHeight: '1.6'
+            }}>If you have existing patient data, you can upload by clicking the button below. It will populate files in the profile page.</p>
+            
+            <UniversalButton text="Upload Patient Data" onClick={uploadExistingPatientData} />
+            
+            <p style={{
+                fontSize: '1.2rem',
+                maxWidth: '800px',
+                lineHeight: '1.6'
+            }}>If you are registering a new patient, just move through the pages in order.</p>
 
             <input 
-                type = "file"
-                accept =  "image/*"
+                type="file"
+                accept="image/*"
                 multiple
-                ref = {fileInputRef}
+                ref={fileInputRef}
                 onChange={handleFileChange}
                 style={{display: 'none'}}
             />
